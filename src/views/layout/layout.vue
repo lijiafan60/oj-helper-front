@@ -1,6 +1,6 @@
 <template>
   <n-layout>
-    <n-layout-header>
+    <n-layout-header bordered>
       <navigation />
     </n-layout-header>
     <n-layout-content content-style="padding: 24px;">
@@ -16,4 +16,9 @@ import { NLayoutContent } from 'naive-ui'
 import Navigation from '@views/layout/navigation/navigation.vue'
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.n-layout-header {
+  height: 56px;
+  background-color: white;
+}
+</style>
