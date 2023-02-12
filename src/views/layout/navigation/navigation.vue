@@ -1,18 +1,38 @@
 <template>
   <div class="nav">
-    <div class="logo"></div>
-    <div class="navMenu">
+    <div class="header-left"></div>
+    <div class="header-mid">
       <n-menu mode="horizontal" :options="menuOptions" />
     </div>
-    <div class="userOption"></div>
+    <div class="header-right">
+      <NAvatar
+        v-show="isLogin"
+        round
+        src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
+        @click="logout"
+      ></NAvatar>
+      <NButton v-show="!isLogin" color="#32ca99" round strong @click="login">
+        登录 / 注册
+      </NButton>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts" name="Navigation">
-import { h } from 'vue'
-import { NMenu } from 'naive-ui'
+import { h, ref } from 'vue'
+import { NButton, NMenu } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
+import { NAvatar } from 'naive-ui'
+import { userStore } from '@/stores/userStore'
+import { useDialog } from 'naive-ui'
+
+const store = userStore()
+
+const isLogin = ref(store.isLogin)
+
+const dialog = useDialog()
+
 const menuOptions: MenuOption[] = [
   {
     label: () =>
@@ -25,6 +45,20 @@ const menuOptions: MenuOption[] = [
     key: 'school',
   },
 ]
+
+function login() {
+  dialog.create({
+    title: () => h(),
+    showIcon: false,
+    content: () => h(),
+    action: () => h(),
+  })
+}
+
+function logout() {
+  store.logout()
+  isLogin.value = store.isLogin
+}
 </script>
 
 <style lang="less" scoped>
@@ -35,22 +69,23 @@ const menuOptions: MenuOption[] = [
   display: flex;
   align-items: center;
 
-  .logo {
+  .header-left {
     height: 100%;
     width: 100px;
     background-color: black;
   }
 
-  .navMenu {
+  .header-mid {
     margin-left: 100px;
     width: 600px;
   }
 
-  .userOption {
+  .header-right {
     height: 100%;
     width: 100px;
     margin-left: auto;
-    background-color: antiquewhite;
+    display: flex;
+    align-items: center;
   }
 }
 </style>
