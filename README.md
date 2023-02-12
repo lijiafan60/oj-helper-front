@@ -1,37 +1,40 @@
-# vue3-ts-vite-starter
+## 简介
 
-This template should help you quickly create a Vue 3 project based on Vite, using TypeScript as the development language by default.
+OJ Helper 使用了最新的前后端技术栈，可以爬取你在各个OJ上的刷题数据，并基于各个OJ的数据，计算出对应的PT。同时也支持添加学校，添加好友,添加ICPC/CCPC获奖证书等功能。
+如果你是学校的算法集训队的队长，它也能帮助你进行集训队的管理统计工作。
 
-这个模板应该能帮你快速创建一个基于 Vite 的 Vue 3 项目，默认使用 TypeScript 作为开发语言。
+## 特性
 
-## Usage
+- 多线程爬虫，更快地爬取速度
 
-You can use a tool like [create-preset](https://github.com/awesome-starter/create-preset) to scaffold your project with this template.
+## 使用
 
-你可以使用 [create-preset](https://github.com/awesome-starter/create-preset) 之类的工具通过此模板来搭建你的项目。
+## 如何贡献
 
-```bash
-npm create preset
-```
+非常欢迎你的加入！[提一个 Issue](https://github.com/jekip/naive-ui-admin/issues) 或者提交一个 Pull Request。
 
-## Why Use This Template
+**Pull Request:**
 
-Why not use [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) to generate the basic template of the project?
+1. Fork 代码!
+2. 创建自己的分支: `git checkout -b feat/xxxx`
+3. 提交你的修改: `git commit -am 'feat(function): add xxxxx'`
+4. 推送您的分支: `git push origin feat/xxxx`
+5. 提交`pull request`
 
-Because the basic template only has the simplest basic configuration, and the actual production project requires a lot of additional tool dependencies to improve development efficiency.
+## Git 贡献提交规范
 
-为什么不使用 [create-vite](https://github.com/vitejs/vite/tree/main/packages/create-vite) 来生成项目的基础模板？
+- 参考 [vue](https://github.com/vuejs/vue/blob/dev/.github/COMMIT_CONVENTION.md) 规范 ([Angular](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular))
 
-因为基础模板只有最简单的配置，而实际生产的项目里，需要很多额外的提高开发效率的工具依赖。
-
-## How to learn
-
-If you are not very familiar with Vue 3 and TypeScript, or even have no contact at all, don’t worry, I have compiled an introductory guide, suitable for developers who do not have Vue 3 development experience to read, a book written based on the development process of a project , It is recommended to read and coding at the same time.
-
-> Btw: Currently only Chinese version, it is recommended to read through Google Translate with Chrome.
-
-See: [Learning Vue3](https://vue3.chengpeiquan.com/)
-
-如果你对 Vue 3 和 TypeScript 不是很熟悉，甚至完全没有接触过，不用担心，我整理了一个入门指南，适合没有 Vue 3 开发经验的开发者阅读，以一个项目的开发过程来写的一本书，建议一边 Reading ，一边 Coding 。
-
-点击阅读：[Vue3入门指南与实战案例](https://vue3.chengpeiquan.com/)
+  - `feat` 增加新功能
+  - `fix` 修复问题/BUG
+  - `style` 代码风格相关无影响运行结果的
+  - `perf` 优化/性能提升
+  - `refactor` 重构
+  - `revert` 撤销修改
+  - `test` 测试相关
+  - `docs` 文档/注释
+  - `chore` 依赖更新/脚手架配置修改等
+  - `workflow` 工作流改进
+  - `ci` 持续集成
+  - `types` 类型定义文件更改
+  - `wip` 开发中
