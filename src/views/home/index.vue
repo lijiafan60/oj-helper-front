@@ -1,10 +1,13 @@
 <template>
   <div>home</div>
-  <login-dialog></login-dialog>
+  <button @click="active = true">点击</button>
+  <Dialog v-model="active"> h </Dialog>
 </template>
 
 <script setup lang="ts">
-import LoginDialog from '@cp/login/loginDialog.vue'
+import Dialog from '@cp/dialog/dialog.vue'
+import { ref } from 'vue'
+let active = ref(false)
 </script>
 
 <style lang="less" scoped></style>
