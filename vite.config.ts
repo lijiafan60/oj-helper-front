@@ -6,7 +6,6 @@ import banner from 'vite-plugin-banner'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { manualChunks } from './scripts/build'
 import pkg from './package.json'
-import AutoImport from 'unplugin-auto-import/vite'
 
 const resolve = (dir: string): string => path.resolve(__dirname, dir)
 
@@ -106,23 +105,5 @@ export default defineConfig({
     ),
 
     VueSetupExtend(),
-
-    AutoImport({
-      // 要使用此插件的文件
-      include: [
-        'src/views/**/*.vue', // 这里代表src/views/目录下面的所有vue文件
-        'src/components/*.vue',
-        'src/components/**/*.vue',
-      ],
-      imports: [
-        'vue', // Vue全部API
-        'vue-router', //Vue路由全部API
-        {
-          axios: [
-            ['default', 'axios'], // import { default as axios } from 'axios'
-          ],
-        },
-      ],
-    }),
   ],
 })
