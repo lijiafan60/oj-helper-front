@@ -14,6 +14,7 @@
       <NButton v-show="!isLogin" color="#32ca99" round strong @click="login">
         登录 / 注册
       </NButton>
+      <Login v-model="active"></Login>
     </div>
   </div>
 </template>
@@ -25,10 +26,13 @@ import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { NAvatar } from 'naive-ui'
 import { userStore } from '@/stores/userStore'
+import Login from '@cp/login/login.vue'
 
 const store = userStore()
 
 const isLogin = ref(store.isLogin)
+
+const active = ref(false)
 
 const menuOptions: MenuOption[] = [
   {
@@ -43,7 +47,9 @@ const menuOptions: MenuOption[] = [
   },
 ]
 
-function login() {}
+function login() {
+  active.value = true
+}
 
 function logout() {
   store.logout()
