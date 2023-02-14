@@ -3,7 +3,7 @@ import { createPinia } from 'pinia'
 import App from '@/App.vue'
 import router from '@/router'
 
-createApp(App)
-  .use(createPinia()) // 启用 Pinia
-  .use(router)
-  .mount('#app')
+const app = createApp(App)
+app.use(createPinia()) // 启用 Pinia
+app.use(router)
+app.mount('#app')

@@ -25,13 +25,10 @@ import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { NAvatar } from 'naive-ui'
 import { userStore } from '@/stores/userStore'
-import { useDialog } from 'naive-ui'
 
 const store = userStore()
 
 const isLogin = ref(store.isLogin)
-
-const dialog = useDialog()
 
 const menuOptions: MenuOption[] = [
   {
@@ -46,14 +43,7 @@ const menuOptions: MenuOption[] = [
   },
 ]
 
-function login() {
-  dialog.create({
-    title: () => h(),
-    showIcon: false,
-    content: () => h(),
-    action: () => h(),
-  })
-}
+function login() {}
 
 function logout() {
   store.logout()
