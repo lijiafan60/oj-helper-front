@@ -4,12 +4,12 @@
     <template #body>
       <div class="form-tabs">
         <n-tabs
-          default-value="signin"
+          default-value="signIn"
           size="large"
           justify-content="space-evenly"
         >
-          <n-tab-pane name="signin" tab="登录">
-            <n-form>
+          <n-tab-pane name="signIn" tab="登录">
+            <n-form label-placement="left" label-width="auto">
               <n-form-item-row label="用户名">
                 <n-input />
               </n-form-item-row>
@@ -21,8 +21,8 @@
               登录
             </n-button>
           </n-tab-pane>
-          <n-tab-pane name="signup" tab="注册">
-            <n-form>
+          <n-tab-pane name="signUp" tab="注册">
+            <n-form label-placement="left" label-width="auto">
               <n-form-item-row label="用户名">
                 <n-input />
               </n-form-item-row>
