@@ -3,7 +3,7 @@
     <n-layout-header bordered>
       <navigation />
     </n-layout-header>
-    <n-layout-content content-style="padding: 24px;">
+    <n-layout-content class="bg">
       <router-view />
     </n-layout-content>
   </n-layout>
@@ -17,8 +17,14 @@ import Navigation from '@views/layout/navigation/navigation.vue'
 </script>
 
 <style lang="less" scoped>
+@import '@/assets/less/global.less';
 .n-layout-header {
   height: 56px;
   background-color: white;
+}
+.bg {
+  background-image: linear-gradient(@light_green, white);
+  display: flex;
+  justify-content: center;
 }
 </style>

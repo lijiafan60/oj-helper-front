@@ -58,6 +58,7 @@ function logout() {
 </script>
 
 <style lang="less" scoped>
+@import '@less/global.less';
 .nav {
   height: 100%;
   width: 1200px;
@@ -73,7 +74,7 @@ function logout() {
 
   .header-mid {
     margin-left: 100px;
-    width: 600px;
+    width: @content_width - 600px;
   }
 
   .header-right {

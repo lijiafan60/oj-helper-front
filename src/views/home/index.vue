@@ -1,11 +1,22 @@
 <template>
-  <div>home</div>
-  <button @click="active = true">点击</button>
+  <n-card>
+    <div class="x"></div>
+  </n-card>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue'
-let active = ref(false)
-</script>
+<script setup lang="ts"></script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+@import '@less/global.less';
+.n-card {
+  margin-top: 18px;
+  height: 100%;
+  width: @content_width;
+  border-radius: 10px;
+}
+.x {
+  height: 3000px;
+  width: 5px;
+  background-color: black;
+}
+</style>
