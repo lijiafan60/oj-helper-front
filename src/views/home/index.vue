@@ -2,12 +2,16 @@
   <div class="content">
     <n-card class="content-body" hoverable="true" title="刷题数统计">
       <template #header-extra>
-        <n-input
-          v-model:value="allName"
-          type="text"
-          placeholder="一键填入用户名"
-        />
-        <n-button type="primary"> 填入</n-button>
+        <n-space>
+          <n-input
+            v-model:value="allName"
+            type="text"
+            placeholder="或许你所有OJ的ID都一样TT"
+            style="border-radius: 10px"
+          />
+          <n-button type="primary"> 填入</n-button>
+          <n-button type="warning"> 清空</n-button>
+        </n-space>
       </template>
       <n-dynamic-input
         v-model:value="value"
@@ -23,6 +27,11 @@
         </n-list>
       </n-card>
       <n-card hoverable="true" title="比赛时刻表" class="contest-time">
+        <n-list>
+          <n-list-item></n-list-item>
+        </n-list>
+      </n-card>
+      <n-card hoverable="true" title="热门题单" class="hot-title-set">
         <n-list>
           <n-list-item></n-list-item>
         </n-list>
@@ -66,10 +75,15 @@ export default defineComponent({
   height: 100%;
   margin-left: @gap_width;
   width: @content_side_width;
+
   .contest-time {
     margin-top: @gap_width;
   }
+  .hot-title-set {
+    margin-top: @gap_width;
+  }
 }
+
 .n-card {
   border-radius: 10px;
 }

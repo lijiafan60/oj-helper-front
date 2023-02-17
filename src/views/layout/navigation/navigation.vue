@@ -45,6 +45,16 @@ const menuOptions: MenuOption[] = [
       h(RouterLink, { to: { name: 'school' } }, { default: () => '学校' }),
     key: 'school',
   },
+  {
+    label: () =>
+      h(RouterLink, { to: { name: 'school' } }, { default: () => '排名' }),
+    key: 'about',
+  },
+  {
+    label: () =>
+      h(RouterLink, { to: { name: 'school' } }, { default: () => '关于' }),
+    key: 'about',
+  },
 ]
 
 function login() {
