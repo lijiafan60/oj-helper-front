@@ -18,11 +18,12 @@ import Navigation from '@views/layout/navigation/navigation.vue'
 
 <style lang="less" scoped>
 @import '@/assets/less/global.less';
-.n-layout-header {
+.nav {
   height: 56px;
   background-color: white;
 }
 .bg {
+  height: 100%;
   background-image: linear-gradient(@light_green, white);
   display: flex;
   justify-content: center;
