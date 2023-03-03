@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <n-card class="content-body" hoverable="true" title="刷题数统计">
+    <n-card class="content-body" hoverable="true" title="刷题数查询">
       <template #header-extra>
         <n-space>
           <n-input
@@ -9,16 +9,38 @@
             placeholder="或许你所有OJ的ID都一样TT"
             style="border-radius: 10px"
           />
-          <n-button type="primary"> 填入</n-button>
-          <n-button type="warning"> 清空</n-button>
+          <n-button type="primary" :on-click="setAllName">
+            一键填入用户名
+          </n-button>
+          <n-button type="warning" :on-click="clear"> 清空</n-button>
+          <n-button type="success"> 查询</n-button>
         </n-space>
       </template>
       <n-dynamic-input
-        v-model:value="value"
-        preset="pair"
-        key-placeholder="选择OJ"
-        value-placeholder="用户名"
-      />
+        v-model:value="dynamicInputValue"
+        :on-create="onDynamicInputCreate"
+      >
+        <template #create-button-default> 添加</template>
+        <template #default="{ value }">
+          <div style="display: flex; align-items: center; width: 100%">
+            <n-checkbox
+              v-model:checked="value.isCheck"
+              style="margin-right: 12px"
+            />
+            <n-select
+              v-model:value="value.ojName"
+              :options="value.ojOptions"
+              placeholder="选择OJ"
+              style="margin-right: 12px; width: 250px"
+            />
+            <n-input
+              v-model:value="value.username"
+              type="text"
+              placeholder="输入用户名"
+            />
+          </div>
+        </template>
+      </n-dynamic-input>
     </n-card>
     <div class="content-side">
       <n-card hoverable="true" title="支持的OJ">
@@ -40,19 +62,102 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script lang="ts" setup>
+import { ref } from 'vue'
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-
-export default defineComponent({
-  setup() {
-    return {
-      value: ref(['', '', '']),
-      allName: ref(''),
-    }
+const dynamicInputValue = ref([
+  {
+    isCheck: ref(true),
+    ojName: ref('codeforces'),
+    ojOptions: [
+      {
+        label: 'codeforces',
+        value: 'codeforces',
+      },
+      {
+        label: 'atcoder',
+        value: 'atcoder',
+      },
+      {
+        label: 'hdu',
+        value: 'hdu',
+      },
+    ],
+    username: '',
   },
-})
+  {
+    isCheck: ref(true),
+    ojName: ref('atcoder'),
+    ojOptions: [
+      {
+        label: 'codeforces',
+        value: 'codeforces',
+      },
+      {
+        label: 'atcoder',
+        value: 'atcoder',
+      },
+      {
+        label: 'hdu',
+        value: 'hdu',
+      },
+    ],
+    username: '',
+  },
+  {
+    isCheck: ref(true),
+    ojName: ref('hdu'),
+    ojOptions: [
+      {
+        label: 'codeforces',
+        value: 'codeforces',
+      },
+      {
+        label: 'atcoder',
+        value: 'atcoder',
+      },
+      {
+        label: 'hdu',
+        value: 'hdu',
+      },
+    ],
+    username: '',
+  },
+])
+
+function onDynamicInputCreate() {
+  return {
+    isCheck: ref(true),
+    ojName: ref(null),
+    ojOptions: [
+      {
+        label: 'codeforces',
+        value: 'codeforces',
+      },
+      {
+        label: 'atcoder',
+        value: 'atcoder',
+      },
+      {
+        label: 'hdu',
+        value: 'hdu',
+      },
+    ],
+    username: ref(''),
+  }
+}
+
+const allName = ref('')
+
+function setAllName() {
+  for (let item of dynamicInputValue.value) {
+    item.username = allName.value
+  }
+}
+
+function clear() {
+  dynamicInputValue.value = []
+}
 </script>
 
 <style lang="less" scoped>
@@ -79,6 +184,7 @@ export default defineComponent({
   .contest-time {
     margin-top: @gap_width;
   }
+
   .hot-title-set {
     margin-top: @gap_width;
   }
