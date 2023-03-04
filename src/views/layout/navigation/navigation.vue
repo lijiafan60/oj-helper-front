@@ -28,12 +28,6 @@ import { NAvatar } from 'naive-ui'
 import { userStore } from '@/stores/userStore'
 import Login from '@cp/login/login.vue'
 
-const store = userStore()
-
-const isLogin = ref(store.isLogin)
-
-const active = ref(false)
-
 const menuOptions: MenuOption[] = [
   {
     label: () =>
@@ -57,9 +51,14 @@ const menuOptions: MenuOption[] = [
   },
 ]
 
+const active = ref(false)
 function login() {
   active.value = true
 }
+
+const store = userStore()
+
+const isLogin = ref(store.isLogin)
 
 function logout() {
   store.logout()

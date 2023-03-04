@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <n-card class="content-body" hoverable="true" title="刷题数查询">
+    <n-card class="content-body" :hoverable="isHoverable" title="刷题数查询">
       <template #header-extra>
         <n-space>
           <n-input
@@ -43,17 +43,17 @@
       </n-dynamic-input>
     </n-card>
     <div class="content-side">
-      <n-card hoverable="true" title="支持的OJ">
+      <n-card :hoverable="isHoverable" title="支持的OJ">
         <n-list>
           <n-list-item></n-list-item>
         </n-list>
       </n-card>
-      <n-card hoverable="true" title="比赛时刻表" class="contest-time">
+      <n-card :hoverable="isHoverable" title="比赛时刻表" class="contest-time">
         <n-list>
           <n-list-item></n-list-item>
         </n-list>
       </n-card>
-      <n-card hoverable="true" title="热门题单" class="hot-title-set">
+      <n-card :hoverable="isHoverable" title="热门题单" class="hot-title-set">
         <n-list>
           <n-list-item></n-list-item>
         </n-list>
@@ -64,6 +64,8 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
+
+const isHoverable = ref(true)
 
 const dynamicInputValue = ref([
   {
