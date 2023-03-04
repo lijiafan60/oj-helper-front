@@ -1,44 +1,74 @@
 <template>
   <Dialog v-model="active" ref="dialog">
-    <template #head></template>
     <template #body>
       <div class="form-tabs">
-        <n-tabs
-          default-value="signIn"
-          size="large"
-          justify-content="space-evenly"
-        >
-          <n-tab-pane name="signIn" tab="登录">
-            <n-form label-placement="left" label-width="auto">
-              <n-form-item-row label="用户名">
-                <n-input />
+        <n-tabs size="large" justify-content="space-evenly">
+          <n-tab-pane name="signIn" tab="免密登录">
+            <n-form
+              label-width="auto"
+              :model="noPasswordLoginInfo"
+              label-placement="left"
+            >
+              <n-form-item-row>
+                <n-input
+                  v-model:value="noPasswordLoginInfo.phoneNumber"
+                  placeholder="手机号"
+                />
               </n-form-item-row>
-              <n-form-item-row label="密码">
-                <n-input />
+              <n-form-item-row>
+                <n-input-group>
+                  <n-input
+                    v-model:value="noPasswordLoginInfo.verificationCode"
+                    placeholder="验证码"
+                  />
+                  <n-button> 获取验证码 </n-button>
+                </n-input-group>
               </n-form-item-row>
             </n-form>
-            <n-button type="primary" block secondary strong @click="close">
-              登录
+            <n-button
+              class="login-button"
+              type="primary"
+              block
+              circle
+              @click="noPasswordLogin"
+            >
+              登录 / 注册
             </n-button>
           </n-tab-pane>
-          <n-tab-pane name="signUp" tab="注册">
-            <n-form label-placement="left" label-width="auto">
-              <n-form-item-row label="用户名">
-                <n-input />
+          <n-tab-pane name="signUp" tab="密码登录">
+            <n-form
+              label-width="auto"
+              :model="passwordLoginInfo"
+              label-placement="left"
+            >
+              <n-form-item-row>
+                <n-input
+                  v-model:value="passwordLoginInfo.username"
+                  placeholder="手机号/邮箱/用户名"
+                />
               </n-form-item-row>
-              <n-form-item-row label="密码">
-                <n-input />
-              </n-form-item-row>
-              <n-form-item-row label="重复密码">
-                <n-input />
+              <n-form-item-row>
+                <n-input
+                  v-model:value="passwordLoginInfo.password"
+                  type="password"
+                  show-password-on="mousedown"
+                  placeholder="密码"
+                />
               </n-form-item-row>
             </n-form>
-            <n-button type="primary" block secondary strong @click="close">
-              注册
+            <n-button
+              class="login-button"
+              type="primary"
+              block
+              circle
+              @click="passwordLogin"
+            >
+              登录
             </n-button>
           </n-tab-pane>
         </n-tabs>
       </div>
+      <div>其他登陆方式</div>
     </template>
   </Dialog>
 </template>
@@ -69,17 +99,37 @@ watch(
   }
 )
 
-const dialog = ref()
+const noPasswordLoginInfo = ref({
+  phoneNumber: '',
+  verificationCode: '',
+})
+const passwordLoginInfo = ref({
+  username: '',
+  password: '',
+})
 
+const dialog = ref()
 function close() {
   dialog.value.closeDialog()
-  props.remove()
+}
+
+function noPasswordLogin() {
+  console.log(noPasswordLoginInfo.value)
+  close()
+}
+function passwordLogin() {
+  console.log(passwordLoginInfo.value)
+  close()
 }
 </script>
 
 <style lang="less" scoped>
+@import '@less/global.less';
 .form-tabs {
   height: 300px;
-  margin-bottom: 20px;
+  margin: 20px 15px;
+}
+.login-button {
+  margin-top: 19px;
 }
 </style>
