@@ -77,6 +77,8 @@
 import Dialog from '@cp/dialog/dialog.vue'
 import { ref, toRefs, watch } from 'vue'
 import { NTabPane, NTabs, NInput, NButton, NForm, NFormItemRow } from 'naive-ui'
+import { doPasswordLogin } from '@/api/user'
+import { userStore } from '@/stores/userStore'
 
 const props = defineProps({
   visible: {
@@ -113,13 +115,19 @@ function close() {
   dialog.value.closeDialog()
 }
 
+const store = userStore()
 function noPasswordLogin() {
   console.log(noPasswordLoginInfo.value)
   close()
 }
 function passwordLogin() {
-  console.log(passwordLoginInfo.value)
-  close()
+  doPasswordLogin(passwordLoginInfo.value).then((res) => {
+    let code = res.data.code
+    if (code === 20231) {
+      store.token = res.data.data.token
+      close()
+    }
+  })
 }
 </script>
 
