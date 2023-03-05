@@ -127,6 +127,7 @@ function passwordLogin() {
     if (code === 20231) {
       store.login(res.data.data)
       close()
+      console.log(store.isLogin)
     }
   })
 }

@@ -5,13 +5,22 @@
       <n-menu mode="horizontal" :options="menuOptions" />
     </div>
     <div class="header-right">
-      <NAvatar
-        v-show="isLogin"
+      <NDropdown v-show="store.isLogin" :options="dropdownOptions" size="small">
+        <NAvatar
+          round
+          size="medium"
+          :src="store.userInfo.avatar"
+          fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
+          @click="logout"
+        ></NAvatar>
+      </NDropdown>
+      <NButton
+        v-show="!store.isLogin"
+        color="#32ca99"
         round
-        src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
-        @click="logout"
-      ></NAvatar>
-      <NButton v-show="!isLogin" color="#32ca99" round strong @click="login">
+        strong
+        @click="showLogin"
+      >
         登录 / 注册
       </NButton>
       <Login v-model="active"></Login>
@@ -21,12 +30,30 @@
 
 <script setup lang="ts" name="Navigation">
 import { h, ref } from 'vue'
-import { NButton, NMenu } from 'naive-ui'
+import type { Component } from 'vue'
+import { NButton, NIcon, NMenu } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { NAvatar } from 'naive-ui'
 import { userStore } from '@/stores/userStore'
 import Login from '@cp/login/login.vue'
+import { LogOutOutline } from '@vicons/ionicons5'
+
+const renderIcon = (icon: Component) => {
+  return () => {
+    return h(NIcon, null, {
+      default: () => h(icon),
+    })
+  }
+}
+
+const dropdownOptions = [
+  {
+    label: '退出登录',
+    key: 'logout',
+    icon: renderIcon(LogOutOutline),
+  },
+]
 
 const menuOptions: MenuOption[] = [
   {
@@ -52,22 +79,20 @@ const menuOptions: MenuOption[] = [
 ]
 
 const active = ref(false)
-function login() {
+function showLogin() {
   active.value = true
 }
 
 const store = userStore()
 
-const isLogin = ref(store.isLogin)
-
 function logout() {
   store.logout()
-  isLogin.value = store.isLogin
 }
 </script>
 
 <style lang="less" scoped>
 @import '@less/global.less';
+
 .nav {
   height: 100%;
   width: 1200px;
