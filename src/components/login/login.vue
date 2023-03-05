@@ -53,6 +53,7 @@
                   type="password"
                   show-password-on="mousedown"
                   placeholder="密码"
+                  @keydown.enter="passwordLogin"
                 />
               </n-form-item-row>
             </n-form>
@@ -124,7 +125,7 @@ function passwordLogin() {
   doPasswordLogin(passwordLoginInfo.value).then((res) => {
     let code = res.data.code
     if (code === 20231) {
-      store.token = res.data.data.token
+      store.login(res.data.data)
       close()
     }
   })
