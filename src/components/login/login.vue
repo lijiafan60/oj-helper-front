@@ -106,6 +106,7 @@ const noPasswordLoginInfo = ref({
   phoneNumber: '',
   verificationCode: '',
 })
+
 const passwordLoginInfo = ref({
   username: '',
   password: '',
