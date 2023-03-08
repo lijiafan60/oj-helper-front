@@ -5,13 +5,18 @@
       <n-menu mode="horizontal" :options="menuOptions" />
     </div>
     <div class="header-right">
-      <NDropdown v-show="store.isLogin" :options="dropdownOptions" size="small">
+      <NDropdown
+        v-show="store.isLogin"
+        :options="dropdownOptions"
+        size="small"
+        @select="handleSelect"
+      >
         <NAvatar
           round
           size="medium"
           :src="store.userInfo.avatar"
           fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
-          @click="logout"
+          style="cursor: pointer"
         ></NAvatar>
       </NDropdown>
       <NButton
@@ -38,6 +43,8 @@ import { NAvatar } from 'naive-ui'
 import { userStore } from '@/stores/userStore'
 import Login from '@cp/login/login.vue'
 import { LogOutOutline } from '@vicons/ionicons5'
+import { UserProfile } from '@vicons/carbon'
+import { IosSettings } from '@vicons/ionicons4'
 
 const renderIcon = (icon: Component) => {
   return () => {
@@ -48,6 +55,16 @@ const renderIcon = (icon: Component) => {
 }
 
 const dropdownOptions = [
+  {
+    label: '主页',
+    key: 'profile',
+    icon: renderIcon(UserProfile),
+  },
+  {
+    label: '设置',
+    key: 'setting',
+    icon: renderIcon(IosSettings),
+  },
   {
     label: '退出登录',
     key: 'logout',
@@ -79,8 +96,26 @@ const menuOptions: MenuOption[] = [
 ]
 
 const active = ref(false)
+
 function showLogin() {
   active.value = true
+}
+
+function handleSelect(key: String) {
+  switch (key) {
+    case 'logout': {
+      logout()
+      break
+    }
+    case 'profile': {
+      logout()
+      break
+    }
+    case 'setting': {
+      logout()
+      break
+    }
+  }
 }
 
 const store = userStore()

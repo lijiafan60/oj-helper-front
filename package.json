@@ -22,6 +22,7 @@
     "@bassist/utils": "^0.9.0",
     "axios": "^1.3.3",
     "pinia": "^2.0.30",
+    "pinia-plugin-persistedstate": "^3.1.0",
     "qs": "^6.11.0",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"

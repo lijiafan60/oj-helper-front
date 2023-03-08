@@ -9,12 +9,6 @@ const http = axios.create({
   withCredentials: false,
 })
 
-export interface IResponseData {
-  code: number
-  msg: string
-  data: object
-}
-
 http.interceptors.request.use(
   (config) => {
     config.headers['token'] = userStore().token

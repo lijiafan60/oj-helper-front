@@ -39,4 +39,5 @@ export const userStore = defineStore('userStore', {
       this.token = ''
     },
   },
+  persist: true,
 })
