@@ -9,9 +9,11 @@ const http = axios.create({
   withCredentials: false,
 })
 
+const store = userStore()
+
 http.interceptors.request.use(
   (config) => {
-    config.headers['token'] = userStore().token
+    config.headers['satoken'] = store.token
     return config
   },
   (error) => {

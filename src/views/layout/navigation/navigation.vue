@@ -39,6 +39,7 @@ import type { Component } from 'vue'
 import { NButton, NIcon, NMenu } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import { RouterLink } from 'vue-router'
+import { doLogout } from '@/api/user'
 import { NAvatar } from 'naive-ui'
 import { userStore } from '@/stores/userStore'
 import Login from '@cp/login/login.vue'
@@ -121,7 +122,9 @@ function handleSelect(key: String) {
 const store = userStore()
 
 function logout() {
-  store.logout()
+  doLogout().then(() => {
+    store.logout()
+  })
 }
 </script>
 
