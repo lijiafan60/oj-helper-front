@@ -4,7 +4,7 @@ import { userStore } from '@/stores/userStore'
 // Content-Type=application/json ==> @RequestBody axios默认方式
 // Content-Type=application/x-ww-form-urlencoded ==> @RequestParam 需要qs序列化
 const http = axios.create({
-  baseURL: 'http://localhost:9001',
+  baseURL: '/devapi',
   timeout: 1000,
   withCredentials: false,
 })

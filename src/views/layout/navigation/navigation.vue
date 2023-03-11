@@ -5,29 +5,20 @@
       <n-menu mode="horizontal" :options="menuOptions" />
     </div>
     <div class="header-right">
-      <NDropdown
-        v-show="store.isLogin"
-        :options="dropdownOptions"
-        size="small"
-        @select="handleSelect"
-      >
-        <NAvatar
-          round
-          size="medium"
-          :src="store.userInfo.avatar"
-          fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
-          style="cursor: pointer"
-        ></NAvatar>
-      </NDropdown>
-      <NButton
-        v-show="!store.isLogin"
-        color="#32ca99"
-        round
-        strong
-        @click="showLogin"
-      >
-        登录 / 注册
-      </NButton>
+      <div v-show="store.isLogin">
+        <NDropdown trigger="click" :options="dropdownOptions" size="small" @select="handleSelect">
+          <NAvatar
+            round
+            size="medium"
+            :src="store.userInfo.avatar"
+            fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
+            style="cursor: pointer"
+          ></NAvatar>
+        </NDropdown>
+      </div>
+      <div v-show="!store.isLogin">
+        <NButton color="#32ca99" round strong @click="showLogin"> 登录 / 注册 </NButton>
+      </div>
       <Login v-model="active"></Login>
     </div>
   </div>
@@ -46,6 +37,7 @@ import Login from '@cp/login/login.vue'
 import { LogOutOutline } from '@vicons/ionicons5'
 import { UserProfile } from '@vicons/carbon'
 import { IosSettings } from '@vicons/ionicons4'
+import router from '@/router'
 
 const renderIcon = (icon: Component) => {
   return () => {
@@ -75,23 +67,19 @@ const dropdownOptions = [
 
 const menuOptions: MenuOption[] = [
   {
-    label: () =>
-      h(RouterLink, { to: { name: 'home' } }, { default: () => '首页' }),
+    label: () => h(RouterLink, { to: { name: 'home' } }, { default: () => '首页' }),
     key: 'home',
   },
   {
-    label: () =>
-      h(RouterLink, { to: { name: 'school' } }, { default: () => '学校' }),
+    label: () => h(RouterLink, { to: { name: 'school' } }, { default: () => '学校' }),
     key: 'school',
   },
   {
-    label: () =>
-      h(RouterLink, { to: { name: 'school' } }, { default: () => '排名' }),
-    key: 'about',
+    label: () => h(RouterLink, { to: { name: 'school' } }, { default: () => '排名' }),
+    key: 'rank',
   },
   {
-    label: () =>
-      h(RouterLink, { to: { name: 'school' } }, { default: () => '关于' }),
+    label: () => h(RouterLink, { to: { name: 'school' } }, { default: () => '关于' }),
     key: 'about',
   },
 ]
@@ -109,7 +97,7 @@ function handleSelect(key: String) {
       break
     }
     case 'profile': {
-      logout()
+      router.push('/profile')
       break
     }
     case 'setting': {

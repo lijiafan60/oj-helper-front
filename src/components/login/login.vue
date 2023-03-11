@@ -4,16 +4,9 @@
       <div class="form-tabs">
         <n-tabs size="large" justify-content="space-evenly">
           <n-tab-pane name="signIn" tab="免密登录">
-            <n-form
-              label-width="auto"
-              :model="noPasswordLoginInfo"
-              label-placement="left"
-            >
+            <n-form label-width="auto" :model="noPasswordLoginInfo" label-placement="left">
               <n-form-item-row>
-                <n-input
-                  v-model:value="noPasswordLoginInfo.phoneNumber"
-                  placeholder="手机号"
-                />
+                <n-input v-model:value="noPasswordLoginInfo.phoneNumber" placeholder="手机号" />
               </n-form-item-row>
               <n-form-item-row>
                 <n-input-group>
@@ -25,22 +18,12 @@
                 </n-input-group>
               </n-form-item-row>
             </n-form>
-            <n-button
-              class="login-button"
-              type="primary"
-              block
-              circle
-              @click="noPasswordLogin"
-            >
+            <n-button class="login-button" type="primary" block circle @click="noPasswordLogin">
               登录 / 注册
             </n-button>
           </n-tab-pane>
           <n-tab-pane name="signUp" tab="密码登录">
-            <n-form
-              label-width="auto"
-              :model="passwordLoginInfo"
-              label-placement="left"
-            >
+            <n-form label-width="auto" :model="passwordLoginInfo" label-placement="left">
               <n-form-item-row>
                 <n-input
                   v-model:value="passwordLoginInfo.username"
@@ -57,13 +40,7 @@
                 />
               </n-form-item-row>
             </n-form>
-            <n-button
-              class="login-button"
-              type="primary"
-              block
-              circle
-              @click="passwordLogin"
-            >
+            <n-button class="login-button" type="primary" block circle @click="passwordLogin">
               登录
             </n-button>
           </n-tab-pane>
@@ -128,7 +105,6 @@ function passwordLogin() {
     if (code === 20231) {
       store.login(res.data.data)
       close()
-      console.log(store.isLogin)
     }
   })
 }
