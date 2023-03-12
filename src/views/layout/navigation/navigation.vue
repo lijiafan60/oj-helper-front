@@ -10,7 +10,7 @@
           <NAvatar
             round
             size="medium"
-            :src="store.userInfo.avatar"
+            :src="store.getAvatarPath"
             fallback-src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg"
             style="cursor: pointer"
           ></NAvatar>

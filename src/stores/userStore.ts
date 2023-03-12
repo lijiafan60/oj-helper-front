@@ -24,6 +24,9 @@ export const userStore = defineStore('userStore', {
   getters: {
     getToken: (state) => state.token,
     loginState: (state) => state.isLogin,
+    getAvatarPath: (state) => {
+      return 'http://localhost:9001/' + state.userInfo.avatar
+    },
   },
   actions: {
     login(data: userData) {
