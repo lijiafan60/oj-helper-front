@@ -9,6 +9,7 @@ interface userData {
   email: string
   phone: string
   token: string
+  school: string
 }
 export const userStore = defineStore('userStore', {
   state: () => ({
@@ -19,6 +20,7 @@ export const userStore = defineStore('userStore', {
       avatar: '',
       email: '',
       phone: '',
+      school: '',
     },
   }),
   getters: {
@@ -36,6 +38,7 @@ export const userStore = defineStore('userStore', {
       this.userInfo.email = data.email
       this.userInfo.phone = data.phone
       this.userInfo.avatar = data.avatar
+      this.userInfo.school = data.school
     },
     logout() {
       this.isLogin = false
