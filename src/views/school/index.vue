@@ -140,9 +140,7 @@ const data: userInfo[] = [
 
   .school-table {
     height: 920px;
-    width: @content_width - @gap_width * 2;
-    margin-left: @gap_width;
-    margin-right: @gap_width;
+    width: @content_width;
   }
 }
 </style>

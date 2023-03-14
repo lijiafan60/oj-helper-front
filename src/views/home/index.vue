@@ -9,35 +9,23 @@
             placeholder="或许你所有OJ的ID都一样TT"
             style="border-radius: 10px"
           />
-          <n-button type="primary" :on-click="setAllName">
-            一键填入用户名
-          </n-button>
+          <n-button type="primary" :on-click="setAllName"> 一键填入用户名 </n-button>
           <n-button type="warning" :on-click="clear"> 清空</n-button>
           <n-button type="success"> 查询</n-button>
         </n-space>
       </template>
-      <n-dynamic-input
-        v-model:value="dynamicInputValue"
-        :on-create="onDynamicInputCreate"
-      >
+      <n-dynamic-input v-model:value="dynamicInputValue" :on-create="onDynamicInputCreate">
         <template #create-button-default> 添加</template>
         <template #default="{ value }">
           <div style="display: flex; align-items: center; width: 100%">
-            <n-checkbox
-              v-model:checked="value.isCheck"
-              style="margin-right: 12px"
-            />
+            <n-checkbox v-model:checked="value.isCheck" style="margin-right: 12px" />
             <n-select
               v-model:value="value.ojName"
               :options="value.ojOptions"
               placeholder="选择OJ"
               style="margin-right: 12px; width: 250px"
             />
-            <n-input
-              v-model:value="value.username"
-              type="text"
-              placeholder="输入用户名"
-            />
+            <n-input v-model:value="value.username" type="text" placeholder="输入用户名" />
           </div>
         </template>
       </n-dynamic-input>
@@ -167,7 +155,6 @@ function clear() {
 
 .content {
   height: 920px;
-  width: @content_width;
   display: flex;
   flex-direction: row;
   margin-top: @gap_width;
