@@ -76,8 +76,4 @@ function uploadAvatar({ file }: UploadCustomRequestOptions) {
     }
   }
 }
-
-.n-card {
-  border-radius: 10px;
-}
 </style>

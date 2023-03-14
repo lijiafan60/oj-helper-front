@@ -1,30 +1,21 @@
 <template>
-  <n-dialog-provider>
-    <n-notification-provider>
-      <n-message-provider>
-        <slot name="default"></slot>
-      </n-message-provider>
-    </n-notification-provider>
-  </n-dialog-provider>
+  <n-config-provider :theme-overrides="themeOverrides">
+    <n-dialog-provider>
+      <n-notification-provider>
+        <n-message-provider>
+          <slot name="default"></slot>
+        </n-message-provider>
+      </n-notification-provider>
+    </n-dialog-provider>
+  </n-config-provider>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-import {
-  NDialogProvider,
-  NNotificationProvider,
-  NMessageProvider,
-} from 'naive-ui'
+<script setup lang="ts" name="AppProvider">
+import { NDialogProvider, NNotificationProvider, NMessageProvider, NConfigProvider } from 'naive-ui'
 
-export default defineComponent({
-  name: 'AppProvider',
-  components: {
-    NDialogProvider,
-    NNotificationProvider,
-    NMessageProvider,
+const themeOverrides = {
+  Card: {
+    borderRadius: '10px',
   },
-  setup() {
-    return {}
-  },
-})
+}
 </script>

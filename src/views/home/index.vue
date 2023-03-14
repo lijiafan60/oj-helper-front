@@ -178,8 +178,4 @@ function clear() {
     margin-top: @gap_width;
   }
 }
-
-.n-card {
-  border-radius: 10px;
-}
 </style>
